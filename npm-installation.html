@@ -2,7 +2,7 @@
 title: How to use NPM
 description: Here you'll learn how to use Nginx Proxy Manager
 published: true
-date: 2024-10-05T07:09:23.263Z
+date: 2024-10-05T07:12:47.399Z
 tags: server
 editor: ckeditor
 dateCreated: 2024-10-04T20:17:21.085Z
@@ -10,7 +10,8 @@ dateCreated: 2024-10-04T20:17:21.085Z
 
 <h1>How to use NGINX proxy manager</h1>
 <p><strong>In this guide you'll learn how to install NPM on your machine! </strong>This deployment uses docker, so if you don't have it installed, please check out the guide on how to install it!</p>
-<h3>1- What is a proxy, and what good is NPM for?</h3>
+<p>You should also know that this is just a different version of the official installation instructions situated <a href="https://nginxproxymanager.com/guide/">here</a>!</p>
+<h2>1- What is a proxy, and what good is NPM for?</h2>
 <p>A <strong>proxy</strong> acts as an intermediary between a client and a server, facilitating communication by forwarding requests and responses between them. There are two main types:</p>
 <ul>
   <li><strong>Forward Proxy</strong>: This type sits in front of the client and forwards requests to the server on behalf of the client. It's often used for privacy, security, or content filtering.</li>
@@ -24,7 +25,7 @@ dateCreated: 2024-10-04T20:17:21.085Z
   <li><strong>Redirection and caching</strong> for efficient traffic management</li>
 </ul>
 <p>In essence, NPM provides a user-friendly way to implement reverse proxies, making it easier to manage web traffic and server resources while improving security and performance.</p>
-<h3>2- What do I need to prepare in advance?</h3>
+<h2>2- What do I need to prepare in advance?</h2>
 <ol>
   <li>You'll need to have a server/machine running any software compatible with the latest docker and docker compose versions</li>
   <li>Install docker on your server/machine</li>
@@ -32,7 +33,7 @@ dateCreated: 2024-10-04T20:17:21.085Z
   <li>The ports <strong>80</strong>, <strong>443</strong> and <strong>81</strong> need to be free on your machine</li>
   <li>You must have a domain or subdomain pointing to your server with an <strong>A record </strong>and an optional <strong>AAAA record</strong>.</li>
 </ol>
-<h3>3- How to install NPM</h3>
+<h2>3- How to install NPM</h2>
 <ol>
   <li>First you'll need to create a folder to store the contents and compose file:</li>
 </ol>
@@ -53,3 +54,7 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt</code></pre>
+<p>4. Save your file by pressing <strong>ctrl + x </strong>and when it prompts you to save press <strong>y </strong>and then the <strong>enter key</strong></p>
+<p>5. Run your compose file:</p>
+<p>This will run your docker compose file, and launch your proxy with the specified ports</p>
+<pre><code class="language-plaintext">sudo docker compose up -d</code></pre>
