@@ -2,7 +2,7 @@
 title: How to use NPM
 description: Here you'll learn how to use Nginx Proxy Manager
 published: true
-date: 2024-10-05T07:12:47.399Z
+date: 2024-10-05T07:17:27.813Z
 tags: server
 editor: ckeditor
 dateCreated: 2024-10-04T20:17:21.085Z
@@ -39,8 +39,10 @@ dateCreated: 2024-10-04T20:17:21.085Z
 </ol>
 <pre><code class="language-plaintext">mkdir nginx-proxy
 cd nginx-proxy</code></pre>
+<hr>
 <p>2. Create the docker compose file in the directory:</p>
 <pre><code class="language-plaintext">sudo nano docker-compose.yml</code></pre>
+<hr>
 <p>3. Paste the contents below inside your file:</p>
 <pre><code class="language-plaintext">version: '3.8'
 services:
@@ -54,7 +56,31 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt</code></pre>
+<hr>
 <p>4. Save your file by pressing <strong>ctrl + x </strong>and when it prompts you to save press <strong>y </strong>and then the <strong>enter key</strong></p>
+<hr>
 <p>5. Run your compose file:</p>
 <p>This will run your docker compose file, and launch your proxy with the specified ports</p>
 <pre><code class="language-plaintext">sudo docker compose up -d</code></pre>
+<hr>
+<p>6. Access the admin interface at <strong>[yourserverip]:81</strong></p>
+<p>Log in using the default login data, and <strong>make sure to change the email and password after logging in for the first time!</strong></p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>Email adress</strong></td>
+        <td>admin@example.com</td>
+      </tr>
+      <tr>
+        <td><strong>Password</strong></td>
+        <td>changeme</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<figure class="image"><img src="/screenshot_2024-10-05_091427.png">
+  <figcaption>This is what you should see after accessing the ip with the port I provided</figcaption>
+</figure>
+<hr>
+<p>7. You're all set! Your proxy should now work correctly! In the next steps I will tell you how to use it!</p>
