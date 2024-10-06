@@ -2,7 +2,7 @@
 title: How to display your current playing song
 description: You'll learn how to display your current playing song on any HTML document using JS
 published: true
-date: 2024-10-06T18:33:10.117Z
+date: 2024-10-06T18:38:13.470Z
 tags: code, js, html
 editor: ckeditor
 dateCreated: 2024-10-06T18:33:10.117Z
@@ -13,3 +13,56 @@ dateCreated: 2024-10-06T18:33:10.117Z
 <figure class="image"><img src="/screenshot_2024-10-06_203207.png">
   <figcaption>How it would look like when using it</figcaption>
 </figure>
+<h2>1- HTML and JS code</h2>
+<pre><code class="language-javascript">          async function fetchLastFmStatus() {
+            try {
+              const apiKey = ''; // Replace with your actual Last.fm API key
+              const username = ''; // Replace with your Last.fm username
+
+              const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&amp;user=${username}&amp;api_key=${apiKey}&amp;format=json&amp;limit=1`);
+
+              if (response.ok) {
+                const data = await response.json();
+                if (data &amp;&amp; data.recenttracks &amp;&amp; data.recenttracks.track &amp;&amp; data.recenttracks.track[0]) {
+                  const track = data.recenttracks.track[0];
+                  const songName = track.name;
+                  const artistName = track.artist['#text'];
+                  const albumArt = track.image[2]['#text']; // Medium size album art
+                  const spotifyUrl = track.url; // Spotify URL
+
+                  document.getElementById('spotify-status').innerHTML = `&lt;b&gt;${songName}&lt;/b&gt; by &lt;b&gt;${artistName}&lt;/b&gt;`;
+                  document.getElementById('spotify-album-art').innerHTML = `&lt;img src="${albumArt}" alt="Album Art" class="rounded-lg mt-4"&gt;`;
+                  document.getElementById('spotify-open-button').innerHTML = `&lt;a href="${spotifyUrl}" target="_blank" class="rounded-md bg-purple-900 px-3.5 py-2.5 text-sm font-semibold text-purple-300 shadow-sm hover:bg-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400"&gt;Open on last.fm&lt;/a&gt;`;
+                } else {
+                  document.getElementById('spotify-status').innerText = 'Not playing anything currently.';
+                  document.getElementById('spotify-album-art').innerHTML = '';
+                  document.getElementById('spotify-open-button').innerHTML = '';
+                }
+              } else {
+                document.getElementById('spotify-status').innerText = 'Failed to fetch status.';
+                document.getElementById('spotify-album-art').innerHTML = '';
+                document.getElementById('spotify-open-button').innerHTML = '';
+              }
+            } catch (error) {
+              document.getElementById('spotify-status').innerText = 'Error fetching status.';
+              document.getElementById('spotify-album-art').innerHTML = '';
+              document.getElementById('spotify-open-button').innerHTML = '';
+            }
+          }
+
+          function startRefreshTimer() {
+            let timer = 10;
+            const refreshTimerElement = document.getElementById('refresh-timer');
+            const interval = setInterval(() =&gt; {
+              timer--;
+              refreshTimerElement.innerHTML = `Refreshes in &lt;b&gt;${timer+1} seconds&lt;/b&gt;`;
+              if (timer === 0) {
+                clearInterval(interval);
+                fetchLastFmStatus();
+                startRefreshTimer();
+              }
+            }, 1000);
+          }
+
+          fetchLastFmStatus();
+          startRefreshTimer();</code></pre>
