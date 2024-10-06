@@ -2,7 +2,7 @@
 title: How to display your current playing song
 description: You'll learn how to display your current playing song on any HTML document using JS
 published: true
-date: 2024-10-06T18:43:08.460Z
+date: 2024-10-06T19:03:29.520Z
 tags: code, js, html
 editor: ckeditor
 dateCreated: 2024-10-06T18:33:10.117Z
@@ -13,7 +13,9 @@ dateCreated: 2024-10-06T18:33:10.117Z
 <figure class="image"><img src="/screenshot_2024-10-06_203207.png">
   <figcaption>How it would look like when using it</figcaption>
 </figure>
-<h2>1- HTML and JS code</h2>
+<h2>1- How to get the last.fm API key</h2>
+<p>&nbsp;</p>
+<h2>2- HTML and JS code</h2>
 <p>Here's the script to insert the items with named divs:</p>
 <p>This displays the function and corresponding div name:</p>
 <figure class="table">
@@ -86,7 +88,7 @@ dateCreated: 2024-10-06T18:33:10.117Z
 
           fetchLastFmStatus();
           startRefreshTimer();</code></pre>
-<p>HTML code:</p>
+<p>HTML code <strong>when using tailwindcss this will be styled as well</strong>:</p>
 <pre><code class="language-html">      &lt;div class="bg-gray-800 rounded-lg shadow-lg p-6"&gt;
         &lt;h3 class="text-xl font-bold text-white mb-2"&gt;Music status&lt;/h3&gt;
         &lt;div id="spotify-status" class="text-gray-400"&gt;Loading...&lt;/div&gt;
