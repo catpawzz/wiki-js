@@ -2,7 +2,7 @@
 title: How to display your current playing song
 description: You'll learn how to display your current playing song on any HTML document using JS
 published: true
-date: 2024-10-06T18:38:13.470Z
+date: 2024-10-06T18:43:08.460Z
 tags: code, js, html
 editor: ckeditor
 dateCreated: 2024-10-06T18:33:10.117Z
@@ -14,6 +14,26 @@ dateCreated: 2024-10-06T18:33:10.117Z
   <figcaption>How it would look like when using it</figcaption>
 </figure>
 <h2>1- HTML and JS code</h2>
+<p>Here's the script to insert the items with named divs:</p>
+<p>This displays the function and corresponding div name:</p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>Display text</strong></td>
+        <td>spotify-status</td>
+      </tr>
+      <tr>
+        <td><strong>Album art</strong></td>
+        <td>spotify-album-art</td>
+      </tr>
+      <tr>
+        <td><strong>Open button</strong></td>
+        <td>spotify-open-button</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
 <pre><code class="language-javascript">          async function fetchLastFmStatus() {
             try {
               const apiKey = ''; // Replace with your actual Last.fm API key
@@ -66,3 +86,11 @@ dateCreated: 2024-10-06T18:33:10.117Z
 
           fetchLastFmStatus();
           startRefreshTimer();</code></pre>
+<p>HTML code:</p>
+<pre><code class="language-html">      &lt;div class="bg-gray-800 rounded-lg shadow-lg p-6"&gt;
+        &lt;h3 class="text-xl font-bold text-white mb-2"&gt;Music status&lt;/h3&gt;
+        &lt;div id="spotify-status" class="text-gray-400"&gt;Loading...&lt;/div&gt;
+        &lt;div id="spotify-album-art" class="flex justify-center mt-2"&gt;&lt;/div&gt;
+        &lt;div id="spotify-open-button" class="flex justify-center mt-4"&gt;&lt;/div&gt;
+        &lt;div id="refresh-timer" class="text-gray-400 text-sm mt-2 text-center"&gt;Refreshes in 10 seconds&lt;/div&gt;
+      &lt;/div&gt;</code></pre>
